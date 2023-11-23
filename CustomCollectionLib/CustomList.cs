@@ -64,6 +64,36 @@ namespace CustomCollectionLib
             }
         }
 
+        //remove a particular item 
+        public bool Remove(T item)
+        {
+            Node? current = head;
+            Node? previous = null;
+
+            while (current != null)
+            {
+                if (EqualityComparer<T>.Default.Equals(current.Data, item))
+                {
+                    if (previous == null)
+                    {
+                        head = current.Next;
+                    }
+                    else
+                    {
+                        previous.Next = current.Next;
+                    }
+
+                    count--;
+                    return true;
+                }
+
+                previous = current;
+                current = current.Next;
+            }
+
+            return false;
+        }
+
         //remove an item from the list at the specified index 
         public void RemoveAt(int index)
         {
@@ -144,10 +174,7 @@ namespace CustomCollectionLib
         }
 
         public bool IsReadOnly => false;
-        public bool Remove(T item)
-        {
-            throw new NotImplementedException();
-        }
+
         public int IndexOf(T item)
         {
             throw new NotImplementedException();

@@ -22,6 +22,7 @@ namespace CustomCollection
 
             Console.WriteLine("List after removal:");
             list.RemoveAt(3);
+            list.Remove(10);
 
             foreach (var item in list)
                 Console.WriteLine(item);
